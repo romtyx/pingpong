@@ -32,3 +32,8 @@ win_height = 500
 window = display.set_mode((win_width, win_height))
 window.fill(BACK)
 
+game = True
+finish = False
+clock = time.clock()
+FPS = 60
+
