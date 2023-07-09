@@ -37,3 +37,7 @@ finish = False
 clock = time.clock()
 FPS = 60
 
+racket_l = Player('racket.png', 30, 200, 4, 50, 150)
+racket_l = Player('racket.png', 520, 200, 4, 50, 150)
+ball = GameSprite('ball.png', 200, 200, 4, 50, 50)
+
