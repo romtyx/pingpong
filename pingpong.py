@@ -38,6 +38,13 @@ clock = time.clock()
 FPS = 60
 
 racket_l = Player('racket.png', 30, 200, 4, 50, 150)
-racket_l = Player('racket.png', 520, 200, 4, 50, 150)
+racket_r = Player('racket.png', 520, 200, 4, 50, 150)
 ball = GameSprite('ball.png', 200, 200, 4, 50, 50)
 
+font.init()
+font = font.Font(None, 35)
+losel = font.render('проиграл левый игрок!', True, (200, 5, 5))
+loser = font.render('проиграл правый игрок!', True, (200, 5, 5))
+
+speed_x = 3
+speed_y = 3
