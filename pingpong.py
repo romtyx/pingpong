@@ -34,12 +34,12 @@ window.fill(BACK)
 
 game = True
 finish = False
-clock = time.clock()
+clock = time.Clock()
 FPS = 60
 
 racket_l = Player('racket.png', 30, 200, 4, 50, 150)
 racket_r = Player('racket.png', 520, 200, 4, 50, 150)
-ball = GameSprite('ball.png', 200, 200, 4, 50, 50)
+ball = GameSprite('ball2.png', 200, 200, 4, 50, 50)
 
 font.init()
 font = font.Font(None, 35)
@@ -57,20 +57,20 @@ while game:
         window.fill(BACK)
         racket_l.update_l()
         racket_r.update_r()
-        ball.rect.x = speed_x
-        ball.rect.y = speed_y
-    if sprite.collide_rect(racket_l, ball) or sprite.collide_rect(racket_r, ball):
-        speed_x *= -1
-    if ball.rect.y > win_height - 50 or  ball.rect.y < 0:
-        speed_y *= -1
-    if ball.rect.x < 0:
-        finish = True
-        window.blit(losel, 200, 200)
-    if ball.rect.x > win_width:
-        finish = True
-        window.blit(loser, 200, 200)
-    racket_l.reset()
-    racket_r.reset()
-    ball.reset()
-display.update()
-clock.tick(FPS)
+        ball.rect.x += speed_x
+        ball.rect.y += speed_y
+        if sprite.collide_rect(racket_l, ball) or sprite.collide_rect(racket_r, ball):
+            speed_x *= -1
+        if ball.rect.y > win_height - 50 or  ball.rect.y < 0:
+            speed_y *= -1
+        if ball.rect.x < 0:
+            finish = True
+            window.blit(losel, (200, 200))
+        if ball.rect.x > win_width:
+            finish = True
+            window.blit(loser, (200, 200))
+        racket_l.reset()
+        racket_r.reset()
+        ball.reset()
+    display.update()
+    clock.tick(FPS)
