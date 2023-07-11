@@ -48,3 +48,29 @@ loser = font.render('проиграл правый игрок!', True, (200, 5, 
 
 speed_x = 3
 speed_y = 3
+
+while game:
+    for e in event.get():
+        if e.type == QUIT:
+            game = False
+    if finish != True:
+        window.fill(BACK)
+        racket_l.update_l()
+        racket_r.update_r()
+        ball.rect.x = speed_x
+        ball.rect.y = speed_y
+    if sprite.collide_rect(racket_l, ball) or sprite.collide_rect(racket_r, ball):
+        speed_x *= -1
+    if ball.rect.y > win_height - 50 or  ball.rect.y < 0:
+        speed_y *= -1
+    if ball.rect.x < 0:
+        finish = True
+        window.blit(losel, 200, 200)
+    if ball.rect.x > win_width:
+        finish = True
+        window.blit(loser, 200, 200)
+    racket_l.reset()
+    racket_r.reset()
+    ball.reset()
+display.update()
+clock.tick(FPS)
